@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs'); // For encrypting password
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport'); // Required for protected routes
-const sync = require('synchronize');
+//const sync = require('synchronize');
 
 // Load Input Validation
 const validateRegisterInput = require('../../validation/common/register');
@@ -17,55 +17,6 @@ const confirmMail = require('../../utils/confirmEmail');
 // Load user model
 const User = require('../../models/common/User');
 const BaandaID = require('../../models/common/BaandaID');
-
-// @route   GET api/users/google
-// @desc    Google get code
-// @access  Public
-// router.get('/google', (req, res) => {
-//   console.log('google auth router users works');
-//   res.json({ msg: 'google auth router users works' });
-// });
-
-router.get(
-  '/google',
-  passport.authenticate('google', {
-    scope: ['profile', 'email'],
-    session: false
-  })
-);
-
-//router.get('/google/callback', passport.authenticate('google'));
-
-router.get(
-  '/google/callback',
-  passport.authenticate('google', { session: false }),
-  (req, res) => {
-    console.log('Got here ... returned ...');
-    console.log('req payload:' + JSON.stringify(req.user));
-    //var token = TokenService.encode(req.user);
-    const payload = req.user;
-    if (!req.err) {
-      jwt.sign(
-        payload,
-        keys.secretOrKey,
-        { expiresIn: 86400 },
-        (err, token) => {
-          res.json({
-            success: true,
-            token: 'Bearer ' + token
-          });
-        }
-      );
-    } else {
-      res.status(400).json(req.err);
-    }
-  }
-);
-
-// router.get('/google/callback', () => {
-//   console.log('I am in /api/users/google/callback');
-//   passport.authenticate('google');
-// });
 
 // @route   POST api/users/login
 // @desc    Login user & return JWT Token

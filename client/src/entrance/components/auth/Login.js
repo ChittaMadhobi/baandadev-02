@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
-import { loginUser } from '../../../actions/authActions';
+import { loginUser, googleLoginUser } from '../../../actions/authActions';
 
 class Login extends Component {
   constructor() {
@@ -47,6 +47,12 @@ class Login extends Component {
 
     // console.log(user);
     this.props.loginUser(userData);
+  }
+
+  onClickGoogle(e) {
+    e.preventDefault();
+    console.log('Got into Google Auth onclick function');
+    this.props.googleLoginUser();
   }
 
   render() {
@@ -99,6 +105,22 @@ class Login extends Component {
                   {errors.emailConfirm}
                 </div>
               )}
+              <div className="text-center">
+                <span>
+                  <h4 className="mb-3 mt-3">
+                    <strong> OR </strong>{' '}
+                  </h4>{' '}
+                </span>
+                <button
+                  className="btn btn-secondary btn-block mt-4"
+                  onClick={this.onClickGoogle.bind(this)}
+                >
+                  Login with Google Authentication
+                </button>
+                <font color="red">
+                  Google Auth is deactivated (to be activated soon).
+                </font>
+              </div>
             </div>
           </div>
         </div>
@@ -109,6 +131,7 @@ class Login extends Component {
 
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
+  googleLoginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired
 };
@@ -118,7 +141,12 @@ const mapStateToProps = state => ({
   errors: state.errors
 });
 
+// export default connect(
+//   mapStateToProps,
+//   { loginUser }
+// )(Login);
+
 export default connect(
   mapStateToProps,
-  { loginUser }
+  { loginUser, googleLoginUser }
 )(Login);

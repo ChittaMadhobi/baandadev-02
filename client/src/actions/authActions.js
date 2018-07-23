@@ -41,6 +41,24 @@ export const loginUser = userData => dispatch => {
     );
 };
 
+// Google Oauth
+export const googleLoginUser = () => dispatch => {
+  console.log('Inside  googleLoginUser');
+  // axios
+  //   .get({
+  //     method: 'get',
+  //     url: '/api/users/google',
+  //     contentType: 'application/json; charset=utf-8',
+  //     dataType: 'json'
+  //   })
+  //   .then(res => console.log('res:' + JSON.stringify(res.data)))
+  //   .catch(err => console.log('err: ' + err.response.data));
+  axios
+    .get('/api/users/google')
+    .then(res => console.log('res:' + JSON.stringify(res.data)))
+    .catch(err => console.log('err: ' + JSON.stringify(err.response)));
+};
+
 // Set logged in users
 export const setCurrentUser = decoded => {
   return {
