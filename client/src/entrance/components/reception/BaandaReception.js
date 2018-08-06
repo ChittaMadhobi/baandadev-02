@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-class BaandaLibrary extends Component {
+class BaandaReception extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -61,12 +61,7 @@ class BaandaLibrary extends Component {
 
   getDFResponse(question) {
     let baseUrl = 'https://api.api.ai/v1/';
-    //let url = baseUrl + 'query?v=20170712';
-    // console.log('url = ' + url);
-    //=========== IMPORTANT =============FIX IT WHEN YOU CAN =============
-    // IF the user is loggin in, then use their baandaid as the sessionId
-    // If unauthenticated user, use the random #
-    // ++++++++++++++++++++++ FIX IT ++++++++++++++++++++++++++++++++++++
+
     let randomnumber = Math.floor(Math.random() * 9000000000) + 1000000000;
     //let dfsesionid = randomnumber.toString();
     axios({
@@ -92,7 +87,7 @@ class BaandaLibrary extends Component {
       })
       .catch(err => {
         console.log('axios error: ' + err.response.data);
-        this.setData({ errors: err.response.data });
+        this.setState({ errors: err.response.data });
         return false;
       });
     return true;
@@ -173,26 +168,42 @@ class BaandaLibrary extends Component {
                   className="border border-dark rounded fixedsize "
                 />
               </div>
-              <div className="w-100" />
-
-              <form noValidate onSubmit={this.onSubmit}>
-                <div className="form-group">
-                  <input
-                    className="form-control form-control-sm"
-                    placeholder="Say something please :)"
-                    name="question"
-                    type="text"
-                    ref={this.input}
-                    value={this.state.questionvalue}
-                    onChange={this.onChange}
-                  />
-
-                  <input
+              <div className="w-100 text-center">
+                {/*<form noValidate onSubmit={this.onSubmit}> */}
+                <form>
+                  <div className="form-group">
+                    <input
+                      className="form-control form-control-sm"
+                      placeholder="Ask something in small sentenses please :)"
+                      name="question"
+                      type="text"
+                      ref={this.input}
+                      value={this.state.questionvalue}
+                      onChange={this.onChange}
+                    />
+                    <div
+                      className="btn-group d-flex "
+                      role="group"
+                      aria-label="..."
+                    >
+                      <button
+                        className="btn btn-primary w-75"
+                        onClick={this.onSubmit}
+                      >
+                        Submit - Type your ask first
+                      </button>
+                      &nbsp;
+                      <button className="btn btn-info w-25" disabled="disabled">
+                        <i className="fa fa-microphone" /> &nbsp; TBD
+                      </button>
+                    </div>
+                    {/*<input
                     type="submit"
                     className="btn btn-info  btn-block mt-4 "
-                  />
-                </div>
-              </form>
+                  /> */}
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -201,7 +212,7 @@ class BaandaLibrary extends Component {
   }
 }
 
-BaandaLibrary.propTypes = {
+BaandaReception.propTypes = {
   auth: PropTypes.object.isRequired
 };
 
@@ -212,4 +223,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {}
-)(BaandaLibrary);
+)(BaandaReception);

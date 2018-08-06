@@ -4,12 +4,13 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import dailyStuff from '../img/nook-task-UI.png';
-import socialCircle from '../img/RelationshipModel.png';
-import innerJourney from '../img/innerJourney.png';
-import yourDreams from '../img/NookDreams.png';
 
-class Nook extends Component {
+import coopInformation from '../img/coopInfo.png';
+import coopLife from '../img/coopLiving.png';
+import coopSmallBiz from '../img/coopSmallBiz.png';
+import coopSupply from '../img/coopSupplyChain.png';
+
+class CoperativeLife extends Component {
   constructor() {
     super();
     this.state = {
@@ -20,12 +21,12 @@ class Nook extends Component {
       answer: '',
       response: ['Hello. I am Baanda. How can I assist?'],
       errors: {},
-      nookChatbutton: false,
-      defaultNookInformation: true,
-      ExploreyourSelfwithBaanda: false,
-      ChoresJournalsLifestuff: false,
-      YourDynamicSocialCircles: false,
-      PursuingYourDreams: false
+      coopChat: false,
+      CoopInfo: true,
+      coopLiving: false,
+      coopbusiness: false,
+      microeconomy: false,
+      supplycatalog: false
     };
 
     this.onChange = this.onChange.bind(this);
@@ -98,7 +99,7 @@ class Nook extends Component {
       })
       .catch(err => {
         console.log('axios error: ' + err.response.data);
-        this.setState({ errors: err.response.data });
+        this.setData({ errors: err.response.data });
         return false;
       });
   }
@@ -159,11 +160,11 @@ class Nook extends Component {
 
   render() {
     //const { errors } = this.state;
-    let nookMainFunctionalPanel;
+    let coopWorkPanel;
 
-    if (this.state.nookChatbutton) {
-      console.log('inside chatbutton');
-      nookMainFunctionalPanel = (
+    if (this.state.coopChat) {
+      //console.log('inside chatbutton');
+      coopWorkPanel = (
         <div className="workarea-padding">
           <div className="shadow-lg border-dark">
             <div
@@ -202,121 +203,48 @@ class Nook extends Component {
       );
     }
 
-    if (this.state.defaultNookInformation) {
-      nookMainFunctionalPanel = (
-        <div className="fixedsize">
-          <div className="workarea-padding">
-            <p className="text-center">
-              <h4>Nook Concept Overview</h4>
-            </p>
-            <p>
-              One’s nook is one’s private place. It is Baanda’s pledge that,
-              unless explicitly requested by you, none of your nook’s
-              information will be shared in any form or shape.{' '}
-            </p>
-
-            <p>
-              When Baanda matures and learns the psychologists traits (engineers
-              are working on it – they have white papers on this), Baanda will
-              talk to you to identify multilayer persona that you are. That’s
-              the starting point of knowing you. Baanda would be like your new
-              friend who is trying to know you intensely in the beginning.{' '}
-            </p>
-
-            <p>
-              Subsequently, Baanda would be your counselor and friend, learn
-              about you and your life’s events and continue the process.{' '}
-            </p>
-
-            <p>
-              In short term, Baanda will enable doing all your online chores and
-              tasks (e.g. paying bills, reminded of stuff you have to do,
-              setting up emergency alerts etc.).{' '}
-            </p>
-
-            <p>
-              Baanda will also let you maintain a dynamic relation with your
-              immediate friends and family. The number of your friends is not
-              important for Baanda for nothing will be advertised or market. The
-              quality of relation with the context of relation and intensity at
-              a point of time is of Baanda’s interest. Baanda will use that
-              intelligence to facilitate you to introspect, improve and assist
-              you in togetherness. Baanda is aware that one’s social and family
-              circle is dynamic.{' '}
-            </p>
-
-            <p>
-              You can also store your documents and other important digital
-              assets in your nook as a reference point and safe keeping.{' '}
-            </p>
-
-            <p>
-              Once again, Baanda may use your intelligence, your perception of
-              life but will never your information. That is, as an example,
-              suppose you (Ms. X) like a Movie. Baanda will never share that
-              information unless you want Baanda to with specific someone in
-              your social circle. However, Baanda would say, the Movie is liked
-              by a person, a young woman from. The identity would be blocked
-              mathematically.{' '}
-            </p>
-
-            <p>
-              Once a system is put in place, even Baanda would not possesses
-              your memory but will not be lost to you. That is, Baanda, like
-              your friend would know your state like a very close friend.
-              However, your memory would be encrypted and stored, with the only
-              key that you have. If you lose your key, the memory of your life’s
-              activity would be lost. Baanda is contemplating on second layer
-              assistance for you to retrieve the key but the process is not
-              finalized yet.{' '}
-            </p>
-          </div>
-        </div>
-      );
-    }
-
-    if (this.state.ExploreyourSelfwithBaanda) {
-      nookMainFunctionalPanel = (
+    if (this.state.CoopInfo) {
+      coopWorkPanel = (
         <div className="fixedsize">
           <div className="workarea-padding">
             <div className="pictures">
-              <img src={innerJourney} width="100%" height="100%" alt="..." />
+              <img src={coopInformation} width="100%" height="100%" alt="..." />
             </div>
           </div>
         </div>
       );
     }
 
-    if (this.state.ChoresJournalsLifestuff) {
-      nookMainFunctionalPanel = (
+    if (this.state.coopLiving) {
+      coopWorkPanel = (
         <div className="fixedsize">
           <div className="workarea-padding">
             <div className="pictures">
-              <img src={dailyStuff} width="100%" height="100%" alt="..." />
+              <img src={coopLife} width="100%" height="100%" alt="..." />
             </div>
           </div>
         </div>
       );
     }
 
-    if (this.state.YourDynamicSocialCircles) {
-      nookMainFunctionalPanel = (
+    if (this.state.coopbusiness) {
+      coopWorkPanel = (
         <div className="fixedsize">
           <div className="workarea-padding">
             <div className="pictures">
-              <img src={socialCircle} width="100%" height="100%" alt="..." />
+              <img src={coopSmallBiz} width="100%" height="100%" alt="..." />
             </div>
           </div>
         </div>
       );
     }
 
-    if (this.state.PursuingYourDreams) {
-      nookMainFunctionalPanel = (
+    if (this.state.supplycatalog) {
+      coopWorkPanel = (
         <div className="fixedsize">
           <div className="workarea-padding">
             <div className="pictures">
-              <img src={yourDreams} width="100%" height="100%" alt="..." />
+              <img src={coopSupply} width="100%" height="100%" alt="..." />
             </div>
           </div>
         </div>
@@ -328,7 +256,7 @@ class Nook extends Component {
         <p className="top-padding" />
         <div className="container">
           <p className="top-padding-workarea" />
-          <h4 className="display-5 text-center">Your Nook in the Internet</h4>
+          <h4 className="display-5 text-center">Cooperative Life & Living</h4>
           <div className="row">
             <div className="col-lg-2 col-md-4 col-sm-6">
               <div className="demobuttons">
@@ -337,16 +265,15 @@ class Nook extends Component {
                   type="button"
                   onClick={() => {
                     this.setState(preState => ({
-                      nookChatbutton: false,
-                      defaultNookInformation: true,
-                      ExploreyourSelfwithBaanda: false,
-                      ChoresJournalsLifestuff: false,
-                      YourDynamicSocialCircles: false,
-                      PursuingYourDreams: false
+                      coopChat: false,
+                      CoopInfo: true,
+                      coopLiving: false,
+                      coopbusiness: false,
+                      supplycatalog: false
                     }));
                   }}
                 >
-                  About Nook
+                  About Co-op
                 </button>
               </div>
 
@@ -356,16 +283,15 @@ class Nook extends Component {
                   type="button"
                   onClick={() => {
                     this.setState(preState => ({
-                      nookChatbutton: true,
-                      defaultNookInformation: false,
-                      ExploreyourSelfwithBaanda: false,
-                      ChoresJournalsLifestuff: false,
-                      YourDynamicSocialCircles: false,
-                      PursuingYourDreams: false
+                      coopChat: true,
+                      CoopInfo: false,
+                      coopLiving: false,
+                      coopbusiness: false,
+                      supplycatalog: false
                     }));
                   }}
                 >
-                  Counselor
+                  Counsellor
                 </button>
               </div>
               <div className="demobuttons">
@@ -374,16 +300,15 @@ class Nook extends Component {
                   type="button"
                   onClick={() => {
                     this.setState(preState => ({
-                      nookChatbutton: false,
-                      defaultNookInformation: false,
-                      ExploreyourSelfwithBaanda: true,
-                      ChoresJournalsLifestuff: false,
-                      YourDynamicSocialCircles: false,
-                      PursuingYourDreams: false
+                      coopChat: false,
+                      CoopInfo: false,
+                      coopLiving: true,
+                      coopbusiness: false,
+                      supplycatalog: false
                     }));
                   }}
                 >
-                  Inner Journey
+                  Coop Living
                 </button>
               </div>
               <div className="demobuttons">
@@ -392,16 +317,15 @@ class Nook extends Component {
                   type="button"
                   onClick={() => {
                     this.setState(preState => ({
-                      nookChatbutton: false,
-                      defaultNookInformation: false,
-                      ExploreyourSelfwithBaanda: false,
-                      ChoresJournalsLifestuff: true,
-                      YourDynamicSocialCircles: false,
-                      PursuingYourDreams: false
+                      coopChat: false,
+                      CoopInfo: false,
+                      coopLiving: false,
+                      coopbusiness: true,
+                      supplycatalog: false
                     }));
                   }}
                 >
-                  Your chores
+                  Coop business
                 </button>
               </div>
               <div className="demobuttons">
@@ -410,40 +334,19 @@ class Nook extends Component {
                   type="button"
                   onClick={() => {
                     this.setState(preState => ({
-                      nookChatbutton: false,
-                      defaultNookInformation: false,
-                      ExploreyourSelfwithBaanda: false,
-                      ChoresJournalsLifestuff: false,
-                      YourDynamicSocialCircles: true,
-                      PursuingYourDreams: false
+                      coopChat: false,
+                      CoopInfo: false,
+                      coopLiving: false,
+                      coopbusiness: false,
+                      supplycatalog: true
                     }));
                   }}
                 >
-                  Social Circle
-                </button>
-              </div>
-              <div className="demobuttons">
-                <button
-                  className="btn btn-outline-primary btn-block btn-sm mt-4"
-                  type="button"
-                  onClick={() => {
-                    this.setState(preState => ({
-                      nookChatbutton: false,
-                      defaultNookInformation: false,
-                      ExploreyourSelfwithBaanda: false,
-                      ChoresJournalsLifestuff: false,
-                      YourDynamicSocialCircles: false,
-                      PursuingYourDreams: true
-                    }));
-                  }}
-                >
-                  Your Dreams
+                  Supply Catalog
                 </button>
               </div>
             </div>
-            <div className="col-lg-10 col-md-8 col-sm-6">
-              {nookMainFunctionalPanel}
-            </div>
+            <div className="col-lg-10 col-md-8 col-sm-6">{coopWorkPanel}</div>
           </div>
         </div>
       </div>
@@ -451,7 +354,7 @@ class Nook extends Component {
   }
 }
 
-Nook.propTypes = {
+CoperativeLife.propTypes = {
   auth: PropTypes.object.isRequired
 };
 
@@ -462,4 +365,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {}
-)(Nook);
+)(CoperativeLife);

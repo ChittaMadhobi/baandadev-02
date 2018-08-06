@@ -4,14 +4,15 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import ReactPlayer from 'react-player';
+//import ReactPlayer from 'react-player';
+import Issues from '../img/ServiceXchangeConcernMitigation.png';
+import serviceExchangeInfo from '../img/serviceExchangeInfo.png';
+import profileMgmt from '../img/profileMgmt.png';
+import serviceMgmt from '../img/serviceManagement.png';
+import SXcooperation from '../img/SXcooperation.png';
+import sxDashboard from '../img/sxDashboard.png';
 
-import onepagera from '../img/onePage-RA.png';
-import libraryInfo from '../img/libraryInfo.png';
-import editorial from '../img/editorial.png';
-import browseNread from '../img/browsenread.jpg';
-
-class BaandaLibrary extends Component {
+class SXchange extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,13 +23,13 @@ class BaandaLibrary extends Component {
       answer: '',
       response: ['Hello. I am Baanda. How can I assist?'],
       errors: {},
-      AboutLibraryPanel: true,
-      LibrarianPanel: false,
-      browseQnAPanel: false,
-      audioVideoPanel: false,
-      editorialPanel: false,
-      baandaArchPanel: false,
-      usingBaanda: false
+      defaultSXInfo: true,
+      councilorSX: false,
+      createManageProfile: false,
+      postRequestOrOffergins: false,
+      cooperationRequestSearch: false,
+      yourDashboard: false,
+      serviceXchangeMitigates: false
     };
 
     this.onChange = this.onChange.bind(this);
@@ -163,22 +164,27 @@ class BaandaLibrary extends Component {
 
   render() {
     //const { errors } = this.state;
-    let libContext = '';
+    let SXContext = '';
 
-    if (this.state.AboutLibraryPanel) {
-      libContext = (
+    if (this.state.defaultSXInfo) {
+      SXContext = (
         <div className="fixedsize">
           <div className="workarea-padding">
             <div className="pictures">
-              <img src={libraryInfo} width="100%" height="100%" alt="..." />
+              <img
+                src={serviceExchangeInfo}
+                width="100%"
+                height="100%"
+                alt="..."
+              />
             </div>
           </div>
         </div>
       );
     }
 
-    if (this.state.LibrarianPanel) {
-      libContext = (
+    if (this.state.councilorSX) {
+      SXContext = (
         <div className="workarea-padding">
           <div className="shadow-lg border-dark">
             <div
@@ -210,7 +216,6 @@ class BaandaLibrary extends Component {
                   <i className="fa fa-microphone" /> &nbsp; TBD
                 </button>
               </div>
-
               {/*<input type="submit" className="btn btn-info btn-block mt-4" /> */}
             </div>
           </form>
@@ -218,99 +223,61 @@ class BaandaLibrary extends Component {
       );
     }
 
-    if (this.state.audioVideoPanel) {
-      libContext = (
+    if (this.state.createManageProfile) {
+      SXContext = (
         <div className="fixedsize">
           <div className="workarea-padding">
-            <p>
-              A listener, or viewer, would have the opportunity of searching
-              audio-video content by category, creator, name, meta-tags (as
-              stated by creator during publishing). The listener would be able
-              to comment on the work. In future releases, a listener or viewer
-              would be able to keep small audio or video response as comments
-              too.
-            </p>
-            <ReactPlayer
-              url="http://peach.themazzone.com/durian/movies/sintel-1024-surround.mp4"
-              className="react-player"
-              playing="true"
-              controls="true"
-              width="100%"
-              height="480px"
-            />
-          </div>
-        </div>
-      );
-    }
-
-    if (this.state.browseQnAPanel) {
-      libContext = (
-        <div className="fixedsize">
-          <div className="workarea-padding">
-            <p>
-              Reader will have the opportunity of searching by category, author,
-              publication-names and meta-tag (as stated by author during
-              publishing). A reader would be able to read and write comments or
-              comments-on-a-comment thereby emulating on-line debate.{' '}
-            </p>
             <div className="pictures">
-              <img src={browseNread} width="100%" height="100%" alt="..." />
+              <img src={profileMgmt} width="100%" height="100%" alt="..." />
             </div>
           </div>
         </div>
       );
     }
 
-    if (this.state.editorialPanel) {
-      libContext = (
+    if (this.state.postRequestOrOffergins) {
+      SXContext = (
         <div className="fixedsize">
           <div className="workarea-padding">
             <div className="pictures">
-              <img src={editorial} width="100%" height="100%" alt="..." />
+              <img src={serviceMgmt} width="100%" height="100%" alt="..." />
             </div>
           </div>
         </div>
       );
     }
 
-    if (this.state.baandaArchPanel) {
-      libContext = (
+    if (this.state.cooperationRequestSearch) {
+      SXContext = (
         <div className="fixedsize">
           <div className="workarea-padding">
-            August, 2018
             <div className="pictures">
-              <img src={onepagera} width="100" height="1100" alt="..." />
+              <img src={SXcooperation} width="100" height="650" alt="..." />
             </div>
           </div>
         </div>
       );
     }
 
-    if (this.state.usingBaanda) {
-      libContext = (
+    if (this.state.yourDashboard) {
+      SXContext = (
         <div className="fixedsize">
           <div className="workarea-padding">
-            <p className="text-center">
-              <h5>Baanda Systems Usage & Reporting</h5>
-            </p>
-            <p>
-              Baanda is expected to become a cooperation oriented global market
-              place. A user may, or would, need direction. Every section will
-              have their own user’s manual. This section would carry
-              usage-guidance for all sections.
-            </p>
-            <p>
-              In the beginning, Service Xchange (SX) is the focus of Baanda and
-              rest of the offices is likely to cater to SX usage. However, a
-              user can ask specific service without SX. Over time, there would
-              be evolving functionalities and user would continue to get
-              directions from this section intelligently and contextually.{' '}
-            </p>
-            <p>
-              This section would also allow users to leave comments on
-              improvement, confusions, and/or ideas for Baanda engineers and
-              designers to consider for improving the services.
-            </p>
+            <div className="pictures">
+              <img src={sxDashboard} width="100" height="650" alt="..." />
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    if (this.state.serviceXchangeMitigates) {
+      SXContext = (
+        <div className="fixedsize">
+          <div className="workarea-padding">
+            <div className="pictures">
+              <img src={Issues} width="100%" height="100%" alt="..." />
+            </div>
           </div>
         </div>
       );
@@ -321,7 +288,9 @@ class BaandaLibrary extends Component {
         <p className="top-padding" />
         <div className="container">
           <p className="top-padding-workarea" />
-          <h4 className="display-5 text-center">Library - Learn & Share</h4>
+          <h4 className="display-5 text-center">
+            <b>Service Xchange</b>
+          </h4>
           <div className="row">
             <div className="col-lg-2 col-md-4 col-sm-6">
               <div className="demobuttons">
@@ -330,20 +299,20 @@ class BaandaLibrary extends Component {
                   type="button"
                   onClick={() => {
                     this.setState(preState => ({
-                      AboutLibraryPanel: true,
-                      LibrarianPanel: false,
-                      browseQnAPanel: false,
-                      audioVideoPanel: false,
-                      editorialPanel: false,
-                      baandaArchPanel: false,
-                      usingBaanda: false
+                      defaultSXInfo: true,
+                      councilorSX: false,
+                      createManageProfile: false,
+                      postRequestOrOffergins: false,
+                      cooperationRequestSearch: false,
+                      yourDashboard: false,
+                      serviceXchangeMitigates: false
                     }));
                   }}
                   data-toggle="tooltip"
                   data-placement="right"
-                  title="Overview of what Baanda  Library is all about."
+                  title="Overview of Service Xchange."
                 >
-                  About Library
+                  About SX
                 </button>
               </div>
               <div className="demobuttons">
@@ -352,20 +321,20 @@ class BaandaLibrary extends Component {
                   type="button"
                   onClick={() => {
                     this.setState(preState => ({
-                      AboutLibraryPanel: false,
-                      LibrarianPanel: true,
-                      browseQnAPanel: false,
-                      audioVideoPanel: false,
-                      editorialPanel: false,
-                      baandaArchPanel: false,
-                      usingBaanda: false
+                      defaultSXInfo: false,
+                      councilorSX: true,
+                      createManageProfile: false,
+                      postRequestOrOffergins: false,
+                      cooperationRequestSearch: false,
+                      yourDashboard: false,
+                      serviceXchangeMitigates: false
                     }));
                   }}
                   data-toggle="tooltip"
                   data-placement="right"
-                  title="Have an intelligent conversation with the librarian."
+                  title="Service Xchange councilor and guide."
                 >
-                  Librarian
+                  SX Cousellor
                 </button>
               </div>
               <div className="demobuttons">
@@ -374,20 +343,20 @@ class BaandaLibrary extends Component {
                   type="button"
                   onClick={() => {
                     this.setState(preState => ({
-                      AboutLibraryPanel: false,
-                      LibrarianPanel: false,
-                      browseQnAPanel: true,
-                      audioVideoPanel: false,
-                      editorialPanel: false,
-                      baandaArchPanel: false,
-                      usingBaanda: false
+                      defaultSXInfo: false,
+                      councilorSX: false,
+                      createManageProfile: true,
+                      postRequestOrOffergins: false,
+                      cooperationRequestSearch: false,
+                      yourDashboard: false,
+                      serviceXchangeMitigates: false
                     }));
                   }}
                   data-toggle="tooltip"
                   data-placement="right"
-                  title="Browse-read Q&A arranged via category."
+                  title="Please create and  manage your profile."
                 >
-                  Browse-read
+                  Profile Mgmt.
                 </button>
               </div>
               <div className="demobuttons">
@@ -396,20 +365,20 @@ class BaandaLibrary extends Component {
                   type="button"
                   onClick={() => {
                     this.setState(preState => ({
-                      AboutLibraryPanel: false,
-                      LibrarianPanel: false,
-                      browseQnAPanel: false,
-                      audioVideoPanel: true,
-                      editorialPanel: false,
-                      baandaArchPanel: false,
-                      usingBaanda: false
+                      defaultSXInfo: false,
+                      councilorSX: false,
+                      createManageProfile: false,
+                      postRequestOrOffergins: true,
+                      cooperationRequestSearch: false,
+                      yourDashboard: false,
+                      serviceXchangeMitigates: false
                     }));
                   }}
                   data-toggle="tooltip"
                   data-placement="right"
-                  title="Audio-visual - search, browse and experience."
+                  title="Service operations - manage services."
                 >
-                  Audio-Visual
+                  Service Mgmt.
                 </button>
               </div>
               <div className="demobuttons">
@@ -418,20 +387,20 @@ class BaandaLibrary extends Component {
                   type="button"
                   onClick={() => {
                     this.setState(preState => ({
-                      AboutLibraryPanel: false,
-                      LibrarianPanel: false,
-                      browseQnAPanel: false,
-                      audioVideoPanel: false,
-                      editorialPanel: true,
-                      baandaArchPanel: false,
-                      usingBaanda: false
+                      defaultSXInfo: false,
+                      councilorSX: false,
+                      createManageProfile: false,
+                      postRequestOrOffergins: false,
+                      cooperationRequestSearch: true,
+                      yourDashboard: false,
+                      serviceXchangeMitigates: false
                     }));
                   }}
                   data-toggle="tooltip"
                   data-placement="right"
-                  title="Share and publish your ideas and creations."
+                  title="Search, manage, matches cooperation process."
                 >
-                  Editorial
+                  Cooperation
                 </button>
               </div>
               <div className="demobuttons">
@@ -440,20 +409,20 @@ class BaandaLibrary extends Component {
                   type="button"
                   onClick={() => {
                     this.setState(preState => ({
-                      AboutLibraryPanel: false,
-                      LibrarianPanel: false,
-                      browseQnAPanel: false,
-                      audioVideoPanel: false,
-                      editorialPanel: false,
-                      baandaArchPanel: true,
-                      usingBaanda: false
+                      defaultSXInfo: false,
+                      councilorSX: false,
+                      createManageProfile: false,
+                      postRequestOrOffergins: false,
+                      cooperationRequestSearch: false,
+                      yourDashboard: true,
+                      serviceXchangeMitigates: false
                     }));
                   }}
                   data-toggle="tooltip"
                   data-placement="right"
-                  title="Shows a snapshot of current architecture, state and next-milestone."
+                  title="Your SX Dashboard."
                 >
-                  Arch. & States
+                  Dashboard
                 </button>
               </div>
               <div className="demobuttons">
@@ -462,25 +431,25 @@ class BaandaLibrary extends Component {
                   type="button"
                   onClick={() => {
                     this.setState(preState => ({
-                      AboutLibraryPanel: false,
-                      LibrarianPanel: false,
-                      browseQnAPanel: false,
-                      audioVideoPanel: false,
-                      editorialPanel: false,
-                      baandaArchPanel: false,
-                      usingBaanda: true
+                      defaultSXInfo: false,
+                      councilorSX: false,
+                      createManageProfile: false,
+                      postRequestOrOffergins: false,
+                      cooperationRequestSearch: false,
+                      yourDashboard: false,
+                      serviceXchangeMitigates: true
                     }));
                   }}
                   data-toggle="tooltip"
                   data-placement="right"
-                  title="Baanda usage guides and improvement feedback center."
+                  title="Engage in service exchange process."
                 >
-                  Using Baanda
+                  SX Mitigates
                 </button>
               </div>
             </div>
             <div className="col-lg-10 col-md-8 col-sm-6">
-              <div>{libContext}</div>
+              <div>{SXContext}</div>
             </div>
           </div>
         </div>
@@ -489,7 +458,7 @@ class BaandaLibrary extends Component {
   }
 }
 
-BaandaLibrary.propTypes = {
+SXchange.propTypes = {
   auth: PropTypes.object.isRequired
 };
 
@@ -500,4 +469,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {}
-)(BaandaLibrary);
+)(SXchange);

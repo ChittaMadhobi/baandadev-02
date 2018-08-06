@@ -142,27 +142,38 @@ p.top-padding {
   padding-top: 35px;
 }
 
-/* div.fixedsize {
-  height: 300px;
-  width: 480px;
-  background-color: rgb(178, 243, 245);
-  overflow: auto;
-  max-height: 300px;
-} */
+.top-padding-workarea {
+  border: none;
+  padding-top: 10px;
+}
+
+button.top-padding {
+  margin-top: 5px;
+  padding-top: 5px;
+}
+
+.workarea-padding {
+  margin-top: 10px;
+  margin-left: 15px;
+  margin-right: 10px;
+  padding-top: 5px;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+}
+
 div.fixedsize {
-  height: 400px;
+  height: 550px;
   width: 100%;
   background-color: rgb(245, 245, 228);
   overflow: auto;
-  max-height: 400px;
+  max-height: 550px;
 }
 
 div.demofixedsize {
-  height: 400px;
+  height: 370px;
   width: 100%;
   background-color: rgb(245, 245, 228);
   overflow: auto;
-  max-height: 150px;
 }
 
 div.demobuttons {
@@ -185,4 +196,37 @@ div.demobuttons {
 
 .demosmallfont {
   font-size: 15px;
+}
+
+.vidio-show {
+  position: relative;
+  border: none;
+}
+
+/* button sizes for inline */
+
+.smaller-button {
+  width: 60px;
+}
+
+.larger-button {
+  width: 200px;
+}
+
+/*   --- Billing Table --- */
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }

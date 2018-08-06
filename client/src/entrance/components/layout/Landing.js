@@ -32,8 +32,11 @@ class Landing extends Component {
                   A society forged with cooperation among peers
                 </p>
                 <hr />
-                <Link to="/baandalibrary" className="btn btn-lg btn-info mr-2">
-                  Wanna Chat
+                <Link
+                  to="/baandaReception"
+                  className="btn btn-lg btn-info mr-2"
+                >
+                  Reception
                 </Link>
                 <Link to="/lobby" className="btn btn-lg btn-light">
                   The Lobby

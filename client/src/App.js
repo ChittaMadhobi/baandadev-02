@@ -14,8 +14,14 @@ import Lobby from './entrance/components/layout/Lobby';
 import Login from './entrance/components/auth/Login';
 import Register from './entrance/components/auth/Register';
 import BaandaLibrary from './librarian/components/BaandaLibrary';
-import ServiceExchange from './servicexchange/components/SXEntrance';
-import HealthCare from './healthcare/components/HealthCareEntrance';
+import ServiceExchange from './servicexchange/components/SXchange';
+import HealthCare from './healthcare/components/HealthCare';
+import BaandaReception from './entrance/components/reception/BaandaReception';
+import Finance from './fintech/components/Finance';
+import Nook from './nook/components/Nook';
+import Blockchain from './blockchain/components/BlockchainServices';
+import Cooperation from './cooperation/components/CooperativeLife';
+import Marketing from './marketing/components/Marketing';
 
 import './App.css';
 
@@ -53,6 +59,16 @@ class App extends Component {
               <Route exact path="/baandalibrary" component={BaandaLibrary} />
               <Route exact path="/servicexchange" component={ServiceExchange} />
               <Route exact path="/healthcare" component={HealthCare} />
+              <Route exact path="/finance" component={Finance} />
+              <Route exact path="/nook" component={Nook} />
+              <Route exact path="/blockchain" component={Blockchain} />
+              <Route exact path="/cooperation" component={Cooperation} />
+              <Route exact path="/marketing" component={Marketing} />
+              <Route
+                exact
+                path="/baandaReception"
+                component={BaandaReception}
+              />
             </div>
             <Footer />
           </div>

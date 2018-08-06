@@ -9,25 +9,19 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { logoutUser } from '../../../actions/authActions';
-//import { Redirect } from 'react-router-dom';
 
 class Navbar extends Component {
   onLogoutClick(e) {
     e.preventDefault();
-    this.props.logoutUser();
+    this.props.logoutUser(this.props.history);
     console.log('Logged out user');
+    this.props.history.push('/login');
   }
 
   render() {
     const { isAuthenticated, user } = this.props.auth;
-
-    // if (!isAuthenticated) {
-    //   console.log('render, NOT or !isAuthenticated in Navbar');
-    //   //this.props.history.push('/');
-    // } else {
-    //   console.log('render, isAuthenticated in Navbar');
-    // }
 
     const authLinks = (
       <ul className="navbar-nav ml-auto">
@@ -111,4 +105,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   { logoutUser }
-)(Navbar);
+)(withRouter(Navbar));

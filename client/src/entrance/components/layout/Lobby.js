@@ -59,7 +59,7 @@ class Lobby extends Component {
               <img src={Talk} alt="" />
               <div className="caption">
                 <p />
-                <h6 className="text-center">Intro-Chats & Library</h6>
+                <h6 className="text-center">Library & Info-Center</h6>
                 <div className="btn-group btn-trigger">
                   <Link
                     to="/baandalibrary"
@@ -79,9 +79,9 @@ class Lobby extends Component {
                 <p />
                 <h6 className="text-center">Your Nook</h6>
                 <div className="btn-group btn-trigger">
-                  <a href="" className="btn btn-info btn-sm">
+                  <Link to="/nook" className="btn btn-lg btn-info btn-sm">
                     Enter & Explore
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -92,7 +92,7 @@ class Lobby extends Component {
               <img src={ServiceXchange} alt="" />
               <div className="caption">
                 <p />
-                <h6 className="text-center">Co-op Service Xchange</h6>
+                <h6 className="text-center">Service Xchange</h6>
                 <div className="btn-group btn-trigger">
                   <Link
                     to="/servicexchange"
@@ -110,11 +110,11 @@ class Lobby extends Component {
               <img src={Marketing} alt="" />
               <div className="caption">
                 <p />
-                <h6 className="text-center">Messaging & Influencing</h6>
+                <h6 className="text-center">Market & Influence</h6>
                 <div className="btn-group btn-trigger">
-                  <a href="" className="btn btn-info btn-sm">
+                  <Link to="/marketing" className="btn btn-lg btn-info btn-sm">
                     Enter & Explore
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -125,11 +125,11 @@ class Lobby extends Component {
               <img src={Copyright} alt="" />
               <div className="caption">
                 <p />
-                <h6 className="text-center">Copyright digital creation</h6>
+                <h6 className="text-center">Blockchain Services</h6>
                 <div className="btn-group btn-trigger">
-                  <a href="" className="btn btn-info btn-sm">
+                  <Link to="/blockchain" className="btn btn-lg btn-info btn-sm">
                     Enter & Explore
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -140,11 +140,11 @@ class Lobby extends Component {
               <img src={FinTech} alt="" />
               <div className="caption">
                 <p />
-                <h6 className="text-center">FinTech for Cooperation</h6>
+                <h6 className="text-center">Finance & Accounts</h6>
                 <div className="btn-group btn-trigger">
-                  <a href="" className="btn btn-info btn-sm">
+                  <Link to="/finance" className="btn btn-lg btn-info btn-sm">
                     Enter & Explore
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -172,9 +172,12 @@ class Lobby extends Component {
                 <p />
                 <h6 className="text-center">Cooperative Life</h6>
                 <div className="btn-group btn-trigger">
-                  <a href="" className="btn btn-info btn-sm">
+                  <Link
+                    to="/cooperation"
+                    className="btn btn-lg btn-info btn-sm"
+                  >
                     Enter & Explore
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
