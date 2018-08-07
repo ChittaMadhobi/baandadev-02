@@ -171,7 +171,7 @@ router.post('/register', (req, res) => {
                 // good
                 res.json({
                   user: user,
-                  message: 'Please confirm email within two days from now.'
+                  message: 'Please confirm email within ten days from now.'
                 });
               } else {
                 console.log(
@@ -205,6 +205,15 @@ router.get('/verify', (req, res) => {
     .then(user => {
       // console.log('user:' + JSON.stringify(user));
       let msg = '';
+      // The following should not happen unless someone filldes with DB directly and delete user.
+      if (!user) {
+        console.log(
+          'The user is not registerd yet. Please register and then click the latest confirmation email sent.'
+        );
+        res.redirect(targetURL);
+        return -1;
+      }
+
       if (!user.isConfirmed) {
         if (user.confirmCode == confirmCodeIn) {
           //console.log('confirm code matched : ' + confirmCodeIn);
