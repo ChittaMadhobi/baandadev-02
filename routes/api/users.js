@@ -198,8 +198,8 @@ router.get('/verify', (req, res) => {
   // const targetURL = req.protocol + '://' + req.get('host') + '/login';
   // res.send(targetURL);
   // This needs to be in place and tested in heroku ************************
-  // const targetURL = 'http://localhost:3000/login'; // For  Dev
-  const targetURL = 'https://baandadev-02.herokuapp.com/login'; //For Heroku
+  const targetURL = 'http://localhost:3000/login'; // For  Dev
+  //const targetURL = 'https://baandadev-02.herokuapp.com/login'; //For Heroku
 
   User.findOne({ email: emailIn })
     .then(user => {
